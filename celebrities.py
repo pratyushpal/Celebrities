@@ -3,6 +3,7 @@ from kivy.properties import NumericProperty
 from kivy.app import App
 from kivy.lang import Builder
 
+# provides the kivy input for graphics
 Builder.load_string('''
 #:import random random.random
 #:import SlideTransition kivy.uix.screenmanager.SlideTransition
