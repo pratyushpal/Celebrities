@@ -2,6 +2,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import NumericProperty
 from kivy.app import App
 from kivy.lang import Builder
+from game import Deck, Team
 
 # provides the kivy input for graphics
 Builder.load_string('''
@@ -13,6 +14,7 @@ Builder.load_string('''
 #:import RiseInTransition kivy.uix.screenmanager.RiseInTransition
 #:import FallOutTransition kivy.uix.screenmanager.FallOutTransition
 #:import NoTransition kivy.uix.screenmanager.NoTransition
+
 <MenuScreen>:
     canvas:
         Color:
@@ -23,7 +25,7 @@ Builder.load_string('''
         font_size: 70
         text: 'Welcome to Celebrities!'
     Button:
-        text: 'Menu'
+        text: 'Play'
         size_hint: None, None
         pos: root.width/4, root.top * 0.25 + 100
         size: 200, 100
@@ -122,12 +124,15 @@ Builder.load_string('''
         on_release: root.manager.current = 'menu'
 ''')
 
-
 class MenuScreen(Screen):
     hue = NumericProperty(0)
 
 class SettingsScreen(Screen):
     hue = NumericProperty(1)
+    cards_per_player = 1
+    rounds = 1
+    players = 1
+    round_timer = 60
 
 class AboutScreen(Screen):
     hue = NumericProperty(2)
@@ -143,7 +148,6 @@ class Celebrities(App):
         root.add_widget(AboutScreen(name= 'about'))
         root.add_widget(RulesScreen(name= 'rules'))
         return root
-
 
 if __name__ == '__main__':
     Celebrities().run()
