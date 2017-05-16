@@ -140,6 +140,10 @@ class AboutScreen(Screen):
 class RulesScreen(Screen):
     hue = NumericProperty(3)
 
+class DurationClock(Label):
+    def update(self, index, *args):
+        self.text = index
+
 class Celebrities(App):
     def build(self):
         root = ScreenManager()
